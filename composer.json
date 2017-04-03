@@ -1,0 +1,30 @@
+{
+    "name": "ssipos90/correlate",
+    "type": "library",
+    "description": "",
+    "autoload": {
+        "psr-4": {
+            "Ssipos\\Correlate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ssipos\\Correlate\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "webpatser/laravel-uuid": "^2.0",
+        "illuminate/http": "^5.4",
+        "monolog/monolog": "^1.22"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian Sipos",
+            "email": "sebastiansipos90@gmail.com"
+        }
+    ]
+}
