@@ -1,5 +1,12 @@
 [![Build Status](https://travis-ci.org/ssipos90/correlate.svg?branch=master)](https://travis-ci.org/ssipos90/correlate)
 
+## Installation
+
+Via composer package management:
+```bash
+$ composer require ssipos90/correlate
+```
+
 ## Usage
 
 Either 
