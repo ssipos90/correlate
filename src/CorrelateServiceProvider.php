@@ -4,7 +4,7 @@ namespace Ssipos\Correlate;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class CorrelateServiceProvider extends ServiceProvider
 {
     public function register()
     {
