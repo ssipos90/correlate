@@ -1,7 +1,8 @@
 {
     "name": "ssipos90/correlate",
     "type": "library",
-    "description": "",
+    "description": "Add correlation ID to requests to use in micro services logs aggregating.",
+    "keywords": ["microservice", "uuid", "dispatcher", "log", "correlate", "laravel", "lumen"],
     "autoload": {
         "psr-4": {
             "Ssipos\\Correlate\\": "src/"
