@@ -2,7 +2,9 @@
 
 namespace Ssipos\Correlate;
 
+use Monolog\Logger;
 use Webpatser\Uuid\Uuid;
+use Illuminate\Http\Request;
 
 class Correlate {
     /** @var string header name to add */
@@ -14,11 +16,16 @@ class Correlate {
     /** @var \Monolog\Logger */
     private $logger;
 
-    public function __construct(\Monolog\Logger $logger) {
+    public function __construct(Logger $logger) {
         $this->logger = $logger;
     }
 
-    public function handle(\Illuminate\Http\Request $request, \Closure $next) {
+    /**
+     * @param Request $request
+     * @param \Closure $next
+     * @return mixed
+     */
+    public function handle(Request $request, \Closure $next) {
         $this->addCorrelationIdIfMissing($request);
 
         $this->addCorrelationIdToLoggerContext(
@@ -28,10 +35,16 @@ class Correlate {
         return $next($request);
     }
 
-    protected function uuid(): Uuid {
+    /**
+     * @return \Webpatser\Uuid\Uuid
+     */
+    protected function uuid() {
         return Uuid::generate($this->uuid);
     }
 
+    /**
+     * @param string $correlationId
+     */
     private function addCorrelationIdToLoggerContext($correlationId) {
         $this->logger->pushProcessor(function (array $record) use ($correlationId) {
             $record['context']['correlation-id'] = $correlationId;
@@ -40,7 +53,10 @@ class Correlate {
         });
     }
 
-    private function addCorrelationIdIfMissing(\Illuminate\Http\Request $request) {
+    /**
+     * @param \Illuminate\Http\Request $request
+     */
+    private function addCorrelationIdIfMissing(Request $request) {
         if (!$request->headers->has($this->correlationHeader)) {
             $request->headers->set($this->correlationHeader, (string) $this->uuid());
         }
