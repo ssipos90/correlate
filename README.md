@@ -26,3 +26,6 @@ Either
     ```php
     Ssipos\Correlate\Correlate::class
     ```
+## TODO
+
+* Add guzzle support for adding the header on forwarding requests
