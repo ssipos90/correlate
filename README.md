@@ -9,6 +9,8 @@ $ composer require ssipos90/correlate
 
 ## Usage
 
+Not tested on Laravel, only Lumen.
+
 Either 
 
 * register the service provider:
@@ -18,7 +20,7 @@ Either
     ```
     * Lumen: add this in your `bootstrap/app.php` file: 
     ```php
-    $app->register(App\Providers\AppServiceProvider::class);
+    $app->register(Ssipos\Correlate\CorrelateServiceProvider::class);
     ```
 * add the middleware to whatever routes you want or globally:
     * Laravel: add the middleware in your `app/Http/Kernel.php` file; 
